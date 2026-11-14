@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.sesame</groupId>
-    <artifactId>librairie</artifactId>
+    <artifactId>h2</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>librairie</name>
     <description>librairie</description>
@@ -91,6 +91,10 @@
             <groupId>org.springframework.modulith</groupId>
             <artifactId>spring-modulith-starter-test</artifactId>
             <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-actuator</artifactId>
         </dependency>
     </dependencies>
     <dependencyManagement>
