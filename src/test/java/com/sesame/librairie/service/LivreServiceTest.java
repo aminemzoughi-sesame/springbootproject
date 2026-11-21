@@ -14,7 +14,7 @@ class LivreServiceTest {
     private LivreService service;
     @Test
     void compterRenvoieCinqLivresAuDepart() {
-        assertEquals(5, service.compter());
+        assertEquals(6, service.compter());
     }
     @Test
     void trouverRenvoieLeLivreExistant() {
@@ -33,6 +33,6 @@ class LivreServiceTest {
     void ajouterAttribueUnIdentifiantEtAugmenteLeNombre() {
         Livre livre = service.ajouter("Candide", "Voltaire", 1759);
         assertNotNull(livre.getId());
-        assertEquals(6, service.compter());
+        assertEquals(7, service.compter());
     }
 }

@@ -1,5 +1,7 @@
 package com.sesame.librairie.controller;
 import java.util.List;
+
+import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -38,17 +40,19 @@ public ResponseEntity<Livre> trouver(@PathVariable("id") Long id) {
             .orElse(ResponseEntity.notFound().build());
 }
     @PostMapping
-    public ResponseEntity<Livre> creer(@RequestBody Livre livre) {
+    public ResponseEntity<Livre> creer(@Valid @RequestBody Livre livre) {
         Livre cree = livreService.enregistrer(livre);
         URI adresse = URI.create("/api/livres/" + cree.getId());
         return ResponseEntity.created(adresse).body(cree);
     }
     @PutMapping("/{id}")
-    public ResponseEntity<Livre> modifier(@PathVariable Long id, @RequestBody Livre livre) {
+    public ResponseEntity<Livre> modifier(@PathVariable Long id, @Valid @RequestBody
+    Livre livre) {
         return livreService.modifier(id, livre)
                 .map(ResponseEntity::ok)
                 .orElse(ResponseEntity.notFound().build());
     }
+
     @DeleteMapping("/{id}")
     public ResponseEntity<Void> supprimer(@PathVariable Long id) {
         if (!livreService.supprimer(id)) {
